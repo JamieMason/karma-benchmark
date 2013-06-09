@@ -1,0 +1,28 @@
+{
+  "name": "Perftacular",
+  "version": "0.0.1",
+  "description": "Continuous JavaScript Performance Monitoring with Benchmark.js & Karma/Testacular",
+  "author": "Jamie Mason, @GotNoSugarBaby",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/JamieMason/Perftacular/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/JamieMason/Perftacular.git"
+  },
+  "keywords": [
+    "jsperf",
+    "jasmine",
+    "jenkins",
+    "benchmark.js",
+    "karma",
+    "testacular"
+  ],
+  "devDependencies": {
+    "karma": "~0.8.5",
+    "grunt": "~0.4.1",
+    "grunt-contrib-concat": "~0.3.0"
+  }
+}
