@@ -1,5 +1,5 @@
 {
-  "name": "Perftacular",
+  "name": "perftacular",
   "version": "0.0.1",
   "description": "Continuous JavaScript Performance Monitoring with Benchmark.js & Karma/Testacular",
   "author": "Jamie Mason, @GotNoSugarBaby",
