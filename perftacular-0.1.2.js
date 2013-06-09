@@ -27,30 +27,19 @@
 
   var suite;
   var suiteSize = 0;
+  var currentGroupName = '';
 
-  function addOne(name, task) {
+  global.benchmark = function (groupName, queueBenchmarks) {
     suite = suite || new Benchmark.Suite();
-    suite.add(name, task);
+    currentGroupName = groupName;
+    queueBenchmarks();
+  };
+
+  global.when = function (scenarioName, benchmark) {
+    suite.add(currentGroupName + ' when ' + scenarioName, benchmark);
     karma.info({
       total: ++suiteSize
     });
-  }
-
-  function addMany(list) {
-    for (var name in list) {
-      addOne(name, list[name]);
-    }
-  }
-
-  global.perftacular = {
-    add: function (a, b) {
-      if (b) {
-        addOne(a, b);
-      } else {
-        addMany(a);
-      }
-      return global.perftacular;
-    }
   };
 
   global.dump = function () {
