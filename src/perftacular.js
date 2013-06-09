@@ -29,6 +29,7 @@
   var suiteSize = 0;
 
   function addOne(name, task) {
+    suite = suite || new Benchmark.Suite();
     suite.add(name, task);
     karma.info({
       total: ++suiteSize
@@ -68,25 +69,30 @@
   };
 
   karma.start = function (runner) {
-    suite = new Benchmark.Suite();
-    suite.on('cycle', function (event) {
-      var result = event.target;
-      karma.result({
-        id: result.id,
-        description: result.name,
-        suite: [],
-        success: true,
-        skipped: false,
-        time: result.stats.mean,
-        log: []
-      });
-    }).on('complete', function () {
-      karma.complete({
+    if (suite) {
+      suite.on('cycle', function (event) {
+        var result = event.target;
+        karma.result({
+          id: result.id,
+          description: result.name,
+          suite: [],
+          success: true,
+          skipped: false,
+          time: result.stats.mean,
+          log: []
+        });
+      }).on('complete', function () {
+        karma.complete({
           coverage: global.__coverage__
         });
-    }).run({
-      async: true
-    });
+      }).run({
+        async: true
+      });
+    } else {
+      karma.complete({
+        coverage: global.__coverage__
+      });
+    }
   };
 
 })(window, window.__karma__);
