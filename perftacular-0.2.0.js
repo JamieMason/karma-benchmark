@@ -29,20 +29,59 @@
   var suiteSize = 0;
   var currentGroupName = '';
 
-  global.benchmark = function (groupName, queueBenchmarks) {
+  /**
+   * @param {String} specName
+   * @param {Function} benchmark
+   */
+  function addSimple(specName, benchmark) {
+    suite.add(specName, benchmark);
+  }
+
+  /**
+   * @param {String} specName
+   * @param {Function} options.before
+   * @param {Function} options.run
+   * @param {Function} options.after
+   */
+  function addPrepared (specName, options) {
+    var spec = {};
+    spec.fn = options.run;
+    if (options.before) { spec.setup = options.before; }
+    if (options.run) { spec.fn = options.run; }
+    if (options.after) { spec.teardown = options.after; }
+    suite.add(specName, spec);
+  }
+
+  function onSuiteComplete() {
+    karma.complete({
+      coverage: global.__coverage__
+    });
+  }
+
+  /**
+   * @param {String} groupName
+   * @param {Function} queueBenchmarks
+   */
+  global.benchmark = function(groupName, queueBenchmarks) {
     suite = suite || new Benchmark.Suite();
     currentGroupName = groupName;
     queueBenchmarks();
   };
 
-  global.when = function (scenarioName, benchmark) {
-    suite.add(currentGroupName + ' when ' + scenarioName, benchmark);
+  /**
+   * @param {String} scenarioName
+   * @param {Function|Object} benchmark
+   */
+  global.when = function(scenarioName, benchmark) {
+    var specName = currentGroupName + ' when ' + scenarioName;
+    var addSpec = typeof benchmark === 'function' ? addSimple : addPrepared;
+    addSpec(specName, benchmark);
     karma.info({
       total: ++suiteSize
     });
   };
 
-  global.dump = function () {
+  global.dump = function() {
     var i = 0;
     var len = arguments.length;
     var ngMock = global.angular && global.angular.mock ? global.angular.mock : null;
@@ -57,9 +96,14 @@
     });
   };
 
-  karma.start = function (runner) {
-    if (suite) {
-      suite.on('cycle', function (event) {
+  karma.start = function(runner) {
+    // just exit if no tests were added
+    if (!suite) {
+      onSuiteComplete();
+    }
+    // otherwise begin running the suite
+    else {
+      suite.on('cycle', function(event) {
         var result = event.target;
         karma.result({
           id: result.id,
@@ -70,16 +114,10 @@
           time: result.stats.mean,
           log: []
         });
-      }).on('complete', function () {
-        karma.complete({
-          coverage: global.__coverage__
-        });
+      }).on('complete', function() {
+        onSuiteComplete();
       }).run({
         async: true
-      });
-    } else {
-      karma.complete({
-        coverage: global.__coverage__
       });
     }
   };
