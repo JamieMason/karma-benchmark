@@ -111,7 +111,8 @@
           suite: [],
           success: true,
           skipped: false,
-          time: result.stats.mean,
+          // needs to be in mSecs
+          time: result.stats.mean * 1000,
           log: []
         });
       }).on('complete', function() {
