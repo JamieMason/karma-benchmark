@@ -1,0 +1,23 @@
+{
+  "name": "karma-benchmark",
+  "version": "0.0.1",
+  "description": "Benchmark.js plugin for the Karma test runner",
+  "author": "Jacob Rask <jacob@jacobrask.net>",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/jacobrask/karma-benchmark/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jacobrask/karma-benchmark.git"
+  },
+  "keywords": [
+    "karma-plugin",
+    "karma-framework",
+    "benchmark"
+  ],
+  "peerDependencies": {
+    "karma": ">=0.9"
+  }
+}
