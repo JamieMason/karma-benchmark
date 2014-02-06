@@ -1,8 +1,8 @@
 {
-  "name": "perftacular",
+  "name": "karma-perftacular",
   "version": "0.2.1",
-  "description": "Continuous JavaScript Performance Monitoring with Benchmark.js & Karma/Testacular",
-  "author": "Jamie Mason, @GotNoSugarBaby",
+  "description": "Continuous JavaScript Performance Monitoring with Benchmark.js and the Karma Runner",
+  "author": "Jamie Mason, @fold_left",
   "license": "MIT",
   "readmeFilename": "README.md",
   "bugs": {
