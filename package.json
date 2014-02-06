@@ -1,8 +1,11 @@
 {
-  "name": "karma-perftacular",
-  "version": "0.2.1",
+  "name": "karma-benchmark",
+  "version": "0.3.0",
   "description": "Continuous JavaScript Performance Monitoring with Benchmark.js and the Karma Runner",
-  "author": "Jamie Mason, @fold_left",
+  "authors": [
+    "Jamie Mason <siunmaru@gmail.com>",
+    "Jacob Rask <jacob@jacobrask.net>"
+  ],
   "license": "MIT",
   "readmeFilename": "README.md",
   "bugs": {
@@ -13,16 +16,17 @@
     "url": "git://github.com/JamieMason/Perftacular.git"
   },
   "keywords": [
+    "benchmark",
     "jsperf",
-    "jasmine",
-    "jenkins",
-    "benchmark.js",
-    "karma",
+    "karma-framework",
+    "karma-plugin",
     "testacular"
   ],
-  "devDependencies": {
-    "karma": "~0.8.5",
+  "peerDependencies": {
     "grunt": "~0.4.1",
-    "grunt-contrib-concat": "~0.3.0"
+    "karma": ">=0.9"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.8.0"
   }
 }

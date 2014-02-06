@@ -1,18 +1,24 @@
 {
+  "boss": true,
+  "browser": true,
   "curly": true,
   "eqeqeq": true,
-  "immed": true,
-  "latedef": true,
+  "es5": false,
+  "evil": true,
+  "expr": true,
+  "latedef": false,
+  "laxbreak": true,
   "newcap": true,
   "noarg": true,
-  "sub": true,
-  "undef": true,
-  "boss": true,
-  "eqnull": true,
   "node": true,
-  "es5": true,
+  "regexdash": true,
+  "strict": false,
+  "sub": true,
+  "trailing": true,
+  "undef": true,
+  "unused": false,
+  "wsh": true,
   "predef": {
-    "Benchmark": true,
-    "window": true
+    "Benchmark": true
   }
 }

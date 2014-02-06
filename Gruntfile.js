@@ -4,19 +4,21 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
 
-    concat: {
-      dist: {
+    jshint: {
+      benchmark: {
+        options: {
+          jshintrc: '.jshintrc'
+        },
         src: [
-          'src/perftacular.js',
-          'src/benchmark-1.0.0.js'
-        ],
-        dest: 'perftacular-' + require('./package.json').version + '.js'
+          'lib/perftacular.js',
+          'adapter.js',
+          'index.js'
+        ]
       }
     }
 
   });
 
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.registerTask('build', ['concat:dist']);
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
 };
