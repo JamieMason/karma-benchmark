@@ -31,7 +31,7 @@
         suite: [],
         success: errors.length === 0,
         skipped: false,
-        time: result.times.elapsed * 1000,
+        time: result.stats.mean * 1000,
         log: errors
       });
     });
