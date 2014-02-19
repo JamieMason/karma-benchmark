@@ -3,45 +3,63 @@
   var global = this;
   var karma = global.__karma__;
 
-  function complete() {
-    karma.complete({
-      coverage: global.__coverage__
-    });
-  }
-
   karma.start = function(runner) {
-
-    var bench = global.bench;
-    var hasTests = !! bench;
+    var suites = global.__karma_benchmark_suites__;
+    var hasTests = !!suites.length;
     var errors = [];
 
     if (!hasTests) {
       return complete();
     }
 
-    bench.on('abort error', function(evt) {
-      errors.push(evt.target.error);
-    });
+    runNextSuite();
 
-    bench.on('cycle', function(evt) {
-      var result = evt.target;
+    function logResult(event) {
+      var suite = this;
+      var result = event.target;
       karma.result({
         id: result.id,
-        description: result.name,
+        description: suite.name+': '+result.name,
         suite: [],
         success: errors.length === 0,
+        log: errors,
         skipped: false,
         time: result.stats.mean * 1000,
-        log: errors
+        benchmark: {
+          suite: suite.name,
+          name: result.name,
+          stats: result.stats,
+          count: result.count,
+          cycles: result.cycles,
+          error: result.error,
+          hz: result.hz
+        }
       });
-    });
+    }
 
-    bench.on('complete', complete);
+    function logError(evt) {
+      errors.push(evt.target.error);
+    }
 
-    bench.run({
-      async: true
-    });
+    function runNextSuite() {
+      if (!suites.length) {
+        return complete();
+      }
 
+      suites.shift()
+      .on('cycle', logResult)
+      .on('abort error', logError)
+      .on('complete', runNextSuite)
+      .run({
+        async: true
+      });
+    }
+
+    function complete() {
+      karma.complete({
+        coverage: global.__coverage__
+      });
+    }
   };
 
 }).call(this);
