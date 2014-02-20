@@ -35,10 +35,13 @@
           hz: result.hz
         }
       });
+
+      // Reset errors
+      errors = [];
     }
 
     function logError(evt) {
-      errors.push(evt.target.error);
+      errors.push(evt.target.error.toString());
     }
 
     function runNextSuite() {
