@@ -4,7 +4,8 @@
   "description": "Continuous JavaScript Performance Monitoring with Benchmark.js and the Karma Runner",
   "authors": [
     "Jamie Mason <siunmaru@gmail.com>",
-    "Jacob Rask <jacob@jacobrask.net>"
+    "Jacob Rask <jacob@jacobrask.net>",
+    "Larry Davis <lazdnet@gmail.com>"
   ],
   "license": "MIT",
   "readmeFilename": "README.md",
