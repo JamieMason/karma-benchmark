@@ -106,52 +106,23 @@ suite('Array iteration', function () {
 });
 ```
 
-### Benchmark options
+### Suite options
 
-The equivalent of the above benchmark with setup and teardown methods is as follows:
+Suite options are the same as in Benchmark.js with one exception: `setup` and `teardown` can be set at the suite level.
+
+See the [Benchmark.js Suite constructor API docs](http://benchmarkjs.com/docs#Suite) for a full list of options.
 
 ```javascript
 suite('Array iteration', function () {
-  var options = {
-    setup: function() {
-      this.list = [5, 4, 3];
-    },
-    teardown: function() {
-      this.list = null;
-    }
-  };
-
   benchmark('_.each', function () {
     _.each(this.list, function(number){
       return number;
     });
-  }, options);
+  });
 
   benchmark('native forEach', function () {
     this.list.forEach(function(number){
       return number;
-    });
-  }, options);
-});
-```
-
-See the [Benchmark.js Benchmark constructor API docs](http://benchmarkjs.com/docs#Benchmark) for a full list of options.
-
-### Suite options
-
-Options can also be passed at the suite level.
-
-```javascript
-suite('Array iteration', function () {
-  benchmark('_.each', function () {
-    _.each([1, 2, 3], function(el){
-      return el;
-    });
-  });
-
-  benchmark('native forEach', function () {
-    [1, 2, 3].forEach(function(el){
-      return el;
     });
   });
 }, {
@@ -159,8 +130,49 @@ suite('Array iteration', function () {
     var suite = this;
     var benchmark = event.target;
     console.log('Cycle completed for '+suite.name+': '+benchmark.name);
+  },
+  setup: function() {
+    this.list = [5, 4, 3];
+  },
+  teardown: function() {
+    this.list = null;
   }
 });
 ```
 
-See the [Benchmark.js Suite constructor API docs](http://benchmarkjs.com/docs#Suite) for a full list of options.
+
+### Benchmark options
+
+Benchmark options are the same as in Benchmark.js. If `setup` and `teardown` are passed to `benchmark()`, they will override `setup` and `teardown` from the suite. Pass `null` or undefined to remove them.
+
+See the [Benchmark.js Benchmark constructor API docs](http://benchmarkjs.com/docs#Benchmark) for a full list of options.
+
+```javascript
+suite('Iteration', function () {
+  benchmark('_.each with array', function () {
+    _.each(this.list, function(number){
+      return number;
+    });
+  }, {
+    setup: function() {
+      this.list = ['a', 'b', 'c'];
+    },
+    teardown: function() {
+      delete this.list
+    }
+  });
+
+  benchmark('_.each with object', function () {
+    _.each(this.list, function(number){
+      return number;
+    });
+  }, {
+    setup: function() {
+      this.list = { 0: 'a', 1: 'b', 2: 'c' };
+    },
+    teardown: function() {
+      delete this.list
+    }
+  });
+});
+```
