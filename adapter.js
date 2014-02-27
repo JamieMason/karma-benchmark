@@ -19,7 +19,7 @@
       var result = event.target;
       karma.result({
         id: result.id,
-        description: suite.name+': '+result.name,
+        description: suite.name + ': ' + result.name,
         suite: [],
         success: errors.length === 0,
         log: errors,
@@ -50,12 +50,12 @@
       }
 
       suites.shift()
-      .on('cycle', logResult)
-      .on('abort error', logError)
-      .on('complete', runNextSuite)
-      .run({
-        async: true
-      });
+        .on('cycle', logResult)
+        .on('abort error', logError)
+        .on('complete', runNextSuite)
+        .run({
+          async: true
+        });
     }
 
     function complete() {
