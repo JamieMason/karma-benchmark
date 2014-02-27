@@ -84,22 +84,22 @@ captureTimeout: 60000
 
 ## Writing Benchmarks
 
-Suites and benchmarks are defined using a wrapper for Benchmark.js that offers a coding style familiar to users of [Jasmine](http://jasmine.github.io/) and [Mocha](http://visionmedia.github.io/mocha/).
+Suites and benchmarks are defined using a wrapper for Benchmark.js in the form of the `suite` and `benchmark` globals.
 
 ### Typical
 
 In this example, a suite is defined that pits `_.each` against the native `Array.forEach` method:
 
 ```javascript
-suite('Array iteration', function () {
-  benchmark('_.each', function () {
-    _.each([1, 2, 3], function(el){
+suite('Array iteration', function() {
+  benchmark('_.each', function() {
+    _.each([1, 2, 3], function(el) {
       return el;
     });
   });
 
-  benchmark('native forEach', function () {
-    [1, 2, 3].forEach(function(el){
+  benchmark('native forEach', function() {
+    [1, 2, 3].forEach(function(el) {
       return el;
     });
   });
@@ -113,15 +113,15 @@ Suite options are the same as in Benchmark.js with one exception: `setup` and `t
 See the [Benchmark.js Suite constructor API docs](http://benchmarkjs.com/docs#Suite) for a full list of options.
 
 ```javascript
-suite('Array iteration', function () {
-  benchmark('_.each', function () {
-    _.each(this.list, function(number){
+suite('Array iteration', function() {
+  benchmark('_.each', function() {
+    _.each(this.list, function(number) {
       return number;
     });
   });
 
-  benchmark('native forEach', function () {
-    this.list.forEach(function(number){
+  benchmark('native forEach', function() {
+    this.list.forEach(function(number) {
       return number;
     });
   });
@@ -129,7 +129,7 @@ suite('Array iteration', function () {
   onCycle: function(event) {
     var suite = this;
     var benchmark = event.target;
-    console.log('Cycle completed for '+suite.name+': '+benchmark.name);
+    console.log('Cycle completed for ' + suite.name + ': ' + benchmark.name);
   },
   setup: function() {
     this.list = [5, 4, 3];
@@ -148,9 +148,9 @@ Benchmark options are the same as in Benchmark.js. If `setup` and `teardown` are
 See the [Benchmark.js Benchmark constructor API docs](http://benchmarkjs.com/docs#Benchmark) for a full list of options.
 
 ```javascript
-suite('Iteration', function () {
-  benchmark('_.each with array', function () {
-    _.each(this.list, function(number){
+suite('Iteration', function() {
+  benchmark('_.each with array', function() {
+    _.each(this.list, function(number) {
       return number;
     });
   }, {
@@ -162,13 +162,17 @@ suite('Iteration', function () {
     }
   });
 
-  benchmark('_.each with object', function () {
-    _.each(this.list, function(number){
+  benchmark('_.each with object', function() {
+    _.each(this.list, function(number) {
       return number;
     });
   }, {
     setup: function() {
-      this.list = { 0: 'a', 1: 'b', 2: 'c' };
+      this.list = {
+        0: 'a',
+        1: 'b',
+        2: 'c'
+      };
     },
     teardown: function() {
       delete this.list
