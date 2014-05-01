@@ -1,6 +1,6 @@
 {
   "name": "karma-benchmark",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Continuous JavaScript Performance Monitoring with Benchmark.js and the Karma Runner",
   "authors": [
     "Jamie Mason <siunmaru@gmail.com>",
