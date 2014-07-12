@@ -180,3 +180,39 @@ suite('Iteration', function() {
   });
 });
 ```
+
+
+### Running only a specific benchmark or suite
+
+To run only a specific benchmark, use `benchmark.only()` or `bbenchmark()` instead of `benchmark()`:
+
+```js
+benchmark.only(function() {
+  // Only this benchmark will run
+  // bbenchmark() does the same thing
+});
+
+benchmark(function() {
+  // This benchmark won't run
+});
+```
+
+The same applies to suites with `suite.only()` and `ssuite()`.
+
+
+### Skipping benchmarks & suites
+
+To skip a benchmark, use `benchmark.skip()` or `xbenchmark()` instead of `benchmark()`:
+
+```js
+benchmark.skip(function() {
+  // This benchmark won't run
+  // xbenchmark() does the same thing
+});
+
+benchmark(function() {
+  // This and all other benchmarks will run
+});
+```
+
+The same applies to suites with `suite.skip()` and `xsuite()`.
