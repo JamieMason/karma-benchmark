@@ -11,7 +11,7 @@
     "Larry Davis <lazdnet@gmail.com>"
   ],
   "devDependencies": {
-    "grunt-contrib-jshint": "~0.8.0"
+    "xo": "0.16.0"
   },
   "homepage": "https://github.com/JamieMason/karma-benchmark",
   "keywords": [
@@ -26,12 +26,20 @@
   "license": "MIT",
   "main": "index.js",
   "peerDependencies": {
-    "grunt": "~0.4.1",
     "karma": ">=0.9"
   },
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git://github.com/JamieMason/karma-benchmark.git"
+  },
+  "scripts": {
+    "lint": "xo --fix"
+  },
+  "xo": {
+    "envs": [
+      "node"
+    ],
+    "space": 2
   }
 }
