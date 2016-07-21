@@ -10,6 +10,9 @@
     "Jacob Rask <jacob@jacobrask.net>",
     "Larry Davis <lazdnet@gmail.com>"
   ],
+  "dependencies": {
+    "benchmark": "1.0.0"
+  },
   "devDependencies": {
     "xo": "0.16.0"
   },
