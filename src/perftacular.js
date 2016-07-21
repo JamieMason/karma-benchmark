@@ -1,8 +1,8 @@
 (function() {
-
   var global = this;
+  var Benchmark = global.Benchmark;
   var karma = global.__karma__;
-  var suites = global.__karma_benchmark_suites__ = [];
+  var suites = global.__karma_benchmark_suites__ = []; // eslint-disable-line camelcase
   var totalTests = 0;
   var ignoreOtherSuites = false;
   var ignoreOtherBenchmarks = false;
@@ -16,9 +16,10 @@
    */
   function extendIf(target, source) {
     for (var key in source) {
-      if (!target.hasOwnProperty(key)) {
-        target[key] = source[key];
+      if (key in target) {
+        continue;
       }
+      target[key] = source[key];
     }
     return target;
   }
@@ -47,8 +48,7 @@
 
       // Drop previously added suites
       suites.length = 0;
-    }
-    else if (ignoreOtherSuites) {
+    } else if (ignoreOtherSuites) {
       // Skip this suite
       return;
     }
@@ -81,8 +81,7 @@
 
         // Reset test count
         totalTests = 0;
-      }
-      else if (ignoreOtherBenchmarks) {
+      } else if (ignoreOtherBenchmarks) {
         // Skip this benchmark
         return;
       }
@@ -118,7 +117,7 @@
      * Actually adds a benchmark to the suite
      * @param  {Object} bench
      * @ignore
-    */
+     */
     function doAdd(bench) {
       currentSuite.add(bench.benchName, bench.benchmark, extendIf(bench.benchOptions || {}, suiteOptions));
       karma.info({
@@ -132,7 +131,7 @@
     addAllBenchmarksToSuite();
 
     // Add each of the queued benchmarks
-    benchmarks.forEach(doAdd)
+    benchmarks.forEach(doAdd);
 
     return currentSuite;
   };
@@ -164,7 +163,7 @@
     var ngMock = global.angular && global.angular.mock ? global.angular.mock : null;
     var output = [];
 
-    for (i = 0; i < arguments.length; i++) {
+    for (i = 0; i < len; i++) {
       output[i] = ngMock ? ngMock.dump(arguments[i]) : arguments[i];
     }
 
@@ -172,5 +171,4 @@
       dump: output
     });
   };
-
 }).call(this);

@@ -1,11 +1,10 @@
 (function() {
-
   var global = this;
   var karma = global.__karma__;
 
-  karma.start = function(runner) {
+  karma.start = function() {
     var suites = global.__karma_benchmark_suites__;
-    var hasTests = !!suites.length;
+    var hasTests = Boolean(suites.length);
     var errors = [];
 
     if (!hasTests) {
@@ -64,5 +63,4 @@
       });
     }
   };
-
 }).call(this);
