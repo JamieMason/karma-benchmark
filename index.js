@@ -5,8 +5,8 @@ module.exports = {
 };
 
 function initBenchmark(files) {
-  ['./src/perftacular.js', './src/adapter.js', 'benchmark']
-    .forEach(registerFile);
+  ['lodash', 'platform', 'benchmark', './src/adapter.js', './src/perftacular.js']
+    .reverse().forEach(registerFile);
 
   function registerFile(selector) {
     files.unshift({
