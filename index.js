@@ -5,7 +5,7 @@ module.exports = {
 };
 
 function initBenchmark(files) {
-  ['lodash', 'platform', 'benchmark', './src/adapter.js', './src/perftacular.js']
+  ['lodash', 'platform', 'benchmark', './src/adapter.js', './src/karma-benchmark.js']
     .reverse().forEach(registerFile);
 
   function registerFile(selector) {
