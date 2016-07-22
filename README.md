@@ -1,4 +1,9 @@
-# karma-benchmark (Née Perftacular)
+# karma-benchmark
+
+[![NPM version](http://img.shields.io/npm/v/karma-benchmark.svg?style=flat-square)](https://www.npmjs.com/package/karma-benchmark)
+[![NPM downloads](http://img.shields.io/npm/dm/karma-benchmark.svg?style=flat-square)](https://www.npmjs.com/package/karma-benchmark)
+[![Dependency Status](http://img.shields.io/david/JamieMason/karma-benchmark.svg?style=flat-square)](https://david-dm.org/JamieMason/karma-benchmark)
+[![Join the chat at https://gitter.im/JamieMason/karma-benchmark](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/JamieMason/karma-benchmark)
 
 > A [Karma](http://karma-runner.github.io/) plugin to run [Benchmark.js](http://benchmarkjs.com/) over multiple browsers with [Jenkins CI](http://jenkins-ci.org/) compatible output.
 
@@ -24,8 +29,12 @@ Then, in **karma.conf.js**, add `benchmark` to the list of reporters:
 module.exports = function(config) {
   config.set({
     // Other Karma config here...
-    frameworks: ['benchmark'],
-    reporters: ['benchmark']
+    frameworks: [
+      'benchmark'
+    ],
+    reporters: [
+      'benchmark'
+    ],
   });
 };
 ```
@@ -48,7 +57,7 @@ Chrome 32.0.1700 (Mac OS X 10.9.1)
   Array search: util.contains at 12635982 ops/sec (2.17x faster than Array.indexOf)
 ```
 
-See [`karma-benchmark-example`](https://github.com/lazd/karma-benchmark-example) for a full example.
+See the [examples](https://github.com/JamieMason/karma-benchmark/tree/master/examples) folder for a full example.
 
 ### Feeding Data Into Jenkins
 
@@ -64,12 +73,16 @@ In **karma.conf.js**, add `junit` to the list of reporters and configure the rep
 module.exports = function(config) {
   config.set({
     // Other Karma config here...
-    frameworks: ['benchmark'],
-    reporters: ['junit'],
+    frameworks: [
+      'benchmark'
+    ],
     junitReporter: {
-      suite: 'unit',
-      outputFile: 'build/junit-benchmark-results.xml'
-    }
+      outputDir: 'reports',
+      outputFile: 'benchmark.xml'
+    },
+    reporters: [
+      'junit'
+    ]
   });
 };
 ```
