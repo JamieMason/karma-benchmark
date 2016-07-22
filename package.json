@@ -1,7 +1,7 @@
 {
   "name": "karma-benchmark",
   "description": "Continuous JavaScript Performance Monitoring with Benchmark.js and the Karma Runner",
-  "version": "0.4.0",
+  "version": "0.6.0",
   "author": "Jamie Mason (https://github.com/JamieMason)",
   "bugs": {
     "url": "https://github.com/JamieMason/karma-benchmark/issues"
