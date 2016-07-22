@@ -1,5 +1,7 @@
 # karma-benchmark
 
+[![Join the chat at https://gitter.im/JamieMason/karma-benchmark](https://badges.gitter.im/JamieMason/karma-benchmark.svg)](https://gitter.im/JamieMason/karma-benchmark?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![NPM version](http://img.shields.io/npm/v/karma-benchmark.svg?style=flat-square)](https://www.npmjs.com/package/karma-benchmark)
 [![NPM downloads](http://img.shields.io/npm/dm/karma-benchmark.svg?style=flat-square)](https://www.npmjs.com/package/karma-benchmark)
 [![Dependency Status](http://img.shields.io/david/JamieMason/karma-benchmark.svg?style=flat-square)](https://david-dm.org/JamieMason/karma-benchmark)
