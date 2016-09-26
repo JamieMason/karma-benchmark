@@ -16,6 +16,8 @@
   },
   "devDependencies": {
     "browserify": "13.1.0",
+    "jasmine": "2.5.2",
+    "jasmine-expect": "3.0.1",
     "xo": "0.16.0"
   },
   "homepage": "https://github.com/JamieMason/karma-benchmark",
@@ -32,8 +34,11 @@
   "main": "index.js",
   "repository": "JamieMason/karma-benchmark",
   "scripts": {
-    "build": "mkdir -p dist; browserify src/main.js -o dist/karma-benchmark.js",
-    "lint": "xo --fix"
+    "build": "browserify src/main.js -o dist/karma-benchmark.js",
+    "lint": "xo --fix",
+    "prebuild": "mkdir -p dist",
+    "pretest": "npm run build",
+    "test": "jasmine JASMINE_CONFIG_PATH=jasmine.json"
   },
   "xo": {
     "envs": [
