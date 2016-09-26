@@ -1,8 +1,8 @@
-(function() {
+(function () {
   var global = this;
   var karma = global.__karma__;
 
-  karma.start = function() {
+  karma.start = function () {
     var suites = global.__karma_benchmark_suites__;
     var hasTests = Boolean(suites.length);
     var errors = [];

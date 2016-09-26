@@ -1,4 +1,4 @@
-(function() {
+(function () {
   var global = this;
   var Benchmark = global.Benchmark;
   var karma = global.__karma__;
@@ -6,7 +6,7 @@
   var totalTests = 0;
   var ignoreOtherSuites = false;
   var ignoreOtherBenchmarks = false;
-  var noop = function() {};
+  var noop = function () {};
 
   /**
    * Copy to target every member of source that target does not share a member of the same name.
@@ -38,7 +38,7 @@
    * @param  {Object}   [suiteOptions]
    * @return {Object}   suite
    */
-  var addSuite = global.suite = function(suiteName, addAllBenchmarksToSuite, suiteOptions, onlyRunThisSuite) {
+  var addSuite = global.suite = function (suiteName, addAllBenchmarksToSuite, suiteOptions, onlyRunThisSuite) {
     if (onlyRunThisSuite) {
       // Reset count
       totalTests = 0;
@@ -108,7 +108,7 @@
      * @param  {Function} benchmark
      * @param  {Object} [benchOptions]
      */
-    queueBenchmarkAdd.only = global.bbenchmark = function(benchName, benchmark, benchOptions) {
+    queueBenchmarkAdd.only = global.bbenchmark = function (benchName, benchmark, benchOptions) {
       // Add only this benchmark to the queue
       queueBenchmarkAdd(benchName, benchmark, benchOptions, true);
     };
@@ -152,12 +152,12 @@
    * @param  {Object}   [suiteOptions]
    * @return {Object}   suite
    */
-  global.suite.only = global.ssuite = function(suiteName, addAllBenchmarksToSuite, suiteOptions) {
+  global.suite.only = global.ssuite = function (suiteName, addAllBenchmarksToSuite, suiteOptions) {
     // Add the suite, mark it as the only suite to run
     addSuite(suiteName, addAllBenchmarksToSuite, suiteOptions, true);
   };
 
-  global.dump = function() {
+  global.dump = function () {
     var i = 0;
     var len = arguments.length;
     var ngMock = global.angular && global.angular.mock ? global.angular.mock : null;
