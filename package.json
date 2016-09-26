@@ -3,19 +3,19 @@
   "description": "Continuous JavaScript Performance Monitoring with Benchmark.js and the Karma Runner",
   "version": "0.6.0",
   "author": "Jamie Mason (https://github.com/JamieMason)",
-  "bugs": {
-    "url": "https://github.com/JamieMason/karma-benchmark/issues"
-  },
+  "bugs": "https://github.com/JamieMason/karma-benchmark/issues",
   "contributors": [
     "Jacob Rask <jacob@jacobrask.net>",
     "Larry Davis <lazdnet@gmail.com>"
   ],
   "dependencies": {
     "benchmark": "2.1.1",
+    "karma": "1.3.0",
     "lodash": "4.16.2",
     "platform": "1.3.1"
   },
   "devDependencies": {
+    "browserify": "13.1.0",
     "xo": "0.16.0"
   },
   "homepage": "https://github.com/JamieMason/karma-benchmark",
@@ -30,18 +30,14 @@
   ],
   "license": "MIT",
   "main": "index.js",
-  "peerDependencies": {
-    "karma": ">=1.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/JamieMason/karma-benchmark.git"
-  },
+  "repository": "JamieMason/karma-benchmark",
   "scripts": {
+    "build": "mkdir -p dist; browserify src/main.js -o dist/karma-benchmark.js",
     "lint": "xo --fix"
   },
   "xo": {
     "envs": [
+      "browser",
       "node"
     ],
     "space": 2
