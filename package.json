@@ -43,6 +43,7 @@
   "xo": {
     "envs": [
       "browser",
+      "jasmine",
       "node"
     ],
     "space": 2
