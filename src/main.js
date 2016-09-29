@@ -1,19 +1,14 @@
-// 3rd party modules
-var karma = require('./vendor/karma');
-
 // modules
 var registerApi = require('./api/register-api');
 var runBenchmarks = require('./run-benchmarks');
-var WrappedBenchmark = require('./wrapped-benchmark');
+var store = require('./store');
+var wrapBenchmark = require('./wrap-benchmark');
 
 // implementation
-global.Benchmark = WrappedBenchmark;
-registerApi();
+registerApi(global,
+  wrapBenchmark(global, global.Benchmark)
+);
 
-karma.start = function () {
-  runBenchmarks(function () {
-    karma.complete({
-      coverage: global.__coverage__
-    });
-  });
+global.__karma__.start = function (clientApi) {
+  runBenchmarks(store.getSuites(), clientApi);
 };
