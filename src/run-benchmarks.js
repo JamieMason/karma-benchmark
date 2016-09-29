@@ -9,9 +9,9 @@ module.exports = runBenchmarks;
 
 // implementation
 function runBenchmarks(done) {
-  var suites = store.getSuites();
-  if (suites.length) {
-    runSuite(suites.shift(), function () {
+  var oSuites = store.getSuites();
+  if (oSuites.length) {
+    runSuite(oSuites.shift(), function () {
       runBenchmarks(done);
     });
   } else {
@@ -19,20 +19,20 @@ function runBenchmarks(done) {
   }
 }
 
-function runSuite(suite, done) {
+function runSuite(oSuite, done) {
   var errors = [];
-  suite
+  oSuite
     .on('cycle', function (e) {
       karma.result({
         id: e.target.id,
-        description: suite.name + ': ' + e.target.name,
+        description: oSuite.name + ': ' + e.target.name,
         suite: [],
         success: errors.length === 0,
         log: errors,
         skipped: false,
         time: e.target.stats.mean * 1000,
         benchmark: {
-          suite: suite.name,
+          suite: oSuite.name,
           name: e.target.name,
           stats: e.target.stats,
           count: e.target.count,

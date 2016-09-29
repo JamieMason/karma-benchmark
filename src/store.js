@@ -6,22 +6,22 @@ module.exports = {
 };
 
 // implementation
-var benchmarks = [];
-var suites = [];
+var oBenchmarks = [];
+var oSuites = [];
 
-function addBenchmark(benchmark, hasSuite) {
-  benchmark.hasSuite = Boolean(hasSuite);
-  benchmarks.push(benchmark);
-  console.log('benchmark added:', benchmark, benchmarks);
-  return benchmark;
+function addBenchmark(oBenchmark, hasSuite) {
+  oBenchmark.hasSuite = Boolean(hasSuite);
+  oBenchmarks.push(oBenchmark);
+  console.log('benchmark added:', oBenchmark, oBenchmarks);
+  return oBenchmark;
 }
 
-function addSuite(suite) {
-  suites.push(suite);
-  console.log('suite added:', suite, suites);
-  return suite;
+function addSuite(oSuite) {
+  oSuites.push(oSuite);
+  console.log('suite added:', oSuite, oSuites);
+  return oSuite;
 }
 
 function getSuites() {
-  return suites;
+  return oSuites;
 }
