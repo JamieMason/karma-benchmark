@@ -1,22 +1,18 @@
 // modules
 var processBenchmarks = require('./process-benchmarks');
-var registerApi = require('./register-api');
-var registerDump = require('./register-dump');
+var provideApi = require('./provide-api');
+var provideDump = require('./provide-dump');
 var runBenchmarks = require('./run-benchmarks');
 var store = require('./store');
-var wrapBenchmark = require('./wrap-benchmark');
+var WrappedBenchmark = require('./wrapped-benchmark');
 
 // implementation
-var clientApi = global.__karma__;
-var wrappedBenchmark = wrapBenchmark(global, global.Benchmark);
+global.Benchmark = WrappedBenchmark;
+provideApi(global);
+provideDump(global);
 
-// create window.dump
-registerDump(global, clientApi);
-
-// expose our wrapper as window.Benchmark
-registerApi(global, wrappedBenchmark);
-
-clientApi.start = function () {
-  var focusedSuites = processBenchmarks(store.getSuites());
-  runBenchmarks(global, focusedSuites, clientApi);
+global.__karma__.start = function () {
+  runBenchmarks(global,
+    processBenchmarks(store.getSuites())
+  );
 };

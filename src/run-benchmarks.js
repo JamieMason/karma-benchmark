@@ -2,7 +2,7 @@
 module.exports = runBenchmarks;
 
 // implementation
-function runBenchmarks(obj, suites, clientApi) {
+function runBenchmarks(obj, suites) {
   runNextBenchmark();
 
   function runNextBenchmark() {
@@ -14,7 +14,7 @@ function runBenchmarks(obj, suites, clientApi) {
   }
 
   function onComplete() {
-    clientApi.complete({
+    obj.__karma__.complete({
       coverage: obj.__coverage__
     });
   }
@@ -23,7 +23,7 @@ function runBenchmarks(obj, suites, clientApi) {
     var errors = [];
     suite
       .on('cycle', function (e) {
-        clientApi.result({
+        obj.__karma__.result({
           id: e.target.id,
           description: suite.name + ': ' + e.target.name,
           suite: [],

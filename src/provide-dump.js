@@ -1,9 +1,9 @@
-module.exports = registerDump;
+module.exports = provideDump;
 
-function registerDump(obj, clientApi) {
+function provideDump(obj) {
   obj.dump = function dump() {
     var ngMock = obj.angular && obj.angular.mock ? obj.angular.mock : null;
-    clientApi.info({
+    obj.__karma__.info({
       dump: _.map(arguments, function (value) {
         return ngMock ? ngMock.dump(value) : value;
       })

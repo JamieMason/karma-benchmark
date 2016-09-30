@@ -1,16 +1,16 @@
 // public
-module.exports = registerApi;
+module.exports = provideApi;
 
 // implementation
-function registerApi(obj, Benchmark) {
+function provideApi(obj) {
   obj.suite = addSuite;
   obj.suite.only = obj.ssuite = focusSuite;
   obj.suite.skip = obj.xsuite = skipSuite;
 
   function addSuite(name, addBenchmarks, options, runAlone) {
-    var oSuite = new Benchmark.Suite(name, options);
-    oSuite.runAlone = Boolean(runAlone);
-    updateBenchmarkApi(obj, oSuite);
+    var suite = new obj.Benchmark.Suite(name, options);
+    suite.runAlone = Boolean(runAlone);
+    updateBenchmarkApi(obj, suite);
     addBenchmarks();
   }
 
@@ -21,15 +21,15 @@ function registerApi(obj, Benchmark) {
   function skipSuite() {}
 }
 
-function updateBenchmarkApi(obj, oSuite) {
+function updateBenchmarkApi(obj, suite) {
   obj.benchmark = addBenchmark;
   obj.benchmark.only = obj.bbenchmark = focusBenchmark;
   obj.benchmark.skip = obj.xbenchmark = skipBenchmark;
 
   function addBenchmark(name, fn, options, runAlone) {
-    oSuite.add(name, fn, options);
-    var oBenchmark = oSuite[oSuite.length - 1];
-    oBenchmark.runAlone = Boolean(runAlone);
+    suite.add(name, fn, options);
+    var benchmark = suite[suite.length - 1];
+    benchmark.runAlone = Boolean(runAlone);
   }
 
   function focusBenchmark(name, addBenchmarks, options) {
