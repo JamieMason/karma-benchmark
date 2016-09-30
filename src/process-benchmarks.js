@@ -3,7 +3,6 @@ module.exports = processBenchmarks;
 
 // implementation
 function processBenchmarks(suites) {
-  var _ = global._;
   var focusedSuites = _.filter(suites, isFocusedSuite);
 
   return focusedSuites.length > 0 ?
@@ -22,6 +21,6 @@ function processBenchmarks(suites) {
   }
 
   function isFocused(obj) {
-    return obj.runAlone === true
+    return obj.runAlone === true;
   }
 }

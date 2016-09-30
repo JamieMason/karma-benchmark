@@ -2,7 +2,7 @@
 module.exports = runBenchmarks;
 
 // implementation
-function runBenchmarks(suites, clientApi) {
+function runBenchmarks(obj, suites, clientApi) {
   runNextBenchmark();
 
   function runNextBenchmark() {
@@ -15,14 +15,14 @@ function runBenchmarks(suites, clientApi) {
 
   function onComplete() {
     clientApi.complete({
-      coverage: global.__coverage__
+      coverage: obj.__coverage__
     });
   }
 
   function runSuite(suite) {
     var errors = [];
     suite
-      .on('cycle', function(e) {
+      .on('cycle', function (e) {
         clientApi.result({
           id: e.target.id,
           description: suite.name + ': ' + e.target.name,
@@ -43,7 +43,7 @@ function runBenchmarks(suites, clientApi) {
         });
         errors = [];
       })
-      .on('abort error', function(e) {
+      .on('abort error', function (e) {
         errors.push(e.target.error.toString());
       })
       .on('complete', runNextBenchmark)
