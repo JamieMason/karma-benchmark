@@ -4,6 +4,7 @@
 [![NPM downloads](http://img.shields.io/npm/dm/karma-benchmark.svg?style=flat-square)](https://www.npmjs.com/package/karma-benchmark)
 [![Dependency Status](http://img.shields.io/david/JamieMason/karma-benchmark.svg?style=flat-square)](https://david-dm.org/JamieMason/karma-benchmark)
 [![Join the chat at https://gitter.im/JamieMason/karma-benchmark](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/JamieMason/karma-benchmark)
+[![Analytics](https://ga-beacon.appspot.com/UA-45466560-5/karma-benchmark?flat&useReferer)](https://github.com/igrigorik/ga-beacon)
 
 > A [Karma](http://karma-runner.github.io/) plugin to run [Benchmark.js](http://benchmarkjs.com/) over multiple browsers with [Jenkins CI](http://jenkins-ci.org/) compatible output.
 
