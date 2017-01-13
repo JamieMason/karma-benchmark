@@ -6,7 +6,7 @@ function runBenchmarks(obj, suites) {
   runNextBenchmark();
 
   function runNextBenchmark() {
-    if (suites.length) {
+    if (suites.length > 0) {
       runSuite(suites.shift());
     } else {
       onComplete();

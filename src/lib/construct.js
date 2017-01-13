@@ -1,4 +1,8 @@
-module.exports = function construct(Instance, a, b, c) {
+// public
+module.exports = construct;
+
+// implementation
+function construct(Instance, a, b, c) {
   if (c) {
     return new Instance(a, b, c);
   }
@@ -9,4 +13,4 @@ module.exports = function construct(Instance, a, b, c) {
     return new Instance(a);
   }
   return new Instance();
-};
+}
