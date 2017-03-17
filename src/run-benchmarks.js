@@ -3,7 +3,17 @@ module.exports = runBenchmarks;
 
 // implementation
 function runBenchmarks(obj, suites) {
+  obj.__karma__.info({
+    total: getTotalBenchmarks()
+  });
+
   runNextBenchmark();
+
+  function getTotalBenchmarks() {
+    return _.reduce(suites, function (acc, suite) {
+      return acc + suite.length;
+    }, 0);
+  }
 
   function runNextBenchmark() {
     if (suites.length > 0) {

@@ -1,4 +1,4 @@
-module.exports = function(karma) {
+module.exports = function (karma) {
   var config = {
     autoWatch: false,
     basePath: '',
