@@ -1,4 +1,5 @@
 examples/reports/
+examples/*.png
 node_modules
 npm-debug.log
 dist

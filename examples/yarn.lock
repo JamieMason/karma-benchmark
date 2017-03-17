@@ -667,6 +667,11 @@ for-in@^1.0.2:
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
   integrity sha1-gQaNKVqBQuwKxybG4iAMMPttXoA=
 
+foreach@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/foreach/-/foreach-2.0.5.tgz#0bee005018aeb260d0a3af3ae658dd0136ec1b99"
+  integrity sha1-C+4AUBiusmDQo6865ljdATbsG5k=
+
 fragment-cache@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/fragment-cache/-/fragment-cache-0.2.1.tgz#4290fad27f13e89be7f33799c6bc5a0abfff0d19"
@@ -1022,11 +1027,26 @@ isobject@^3.0.0, isobject@^3.0.1:
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
 
-"karma-benchmark@file:..":
+karma-benchmark-json-reporter@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/karma-benchmark-json-reporter/-/karma-benchmark-json-reporter-1.0.1.tgz#c9bdb9468cebf57863ed3a39741718c0d9767bd1"
+  integrity sha512-mbt+5HJFN2nhfBIeT0x9yoq07T1Qx4Dlmqlc92TBYY73UNHty/9npG/wd9Er7M1baCrwG8RtO4DBeSJRQKeSeQ==
+
+karma-benchmark-plotly-reporter@1.0.0:
   version "1.0.0"
+  resolved "https://registry.yarnpkg.com/karma-benchmark-plotly-reporter/-/karma-benchmark-plotly-reporter-1.0.0.tgz#0b0f7fcadc65f9a19e8300693d2989416373e8fc"
+  integrity sha1-Cw9/ytxl+aGegwBpPSmJQWNz6Pw=
   dependencies:
-    lodash "4.17.11"
-    platform "1.3.5"
+    karma-benchmark-json-reporter "^1.0.0"
+    plotly "^1.0.6"
+
+karma-benchmark@*:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/karma-benchmark/-/karma-benchmark-1.0.0.tgz#17f95286a7467f87d87c9952862c4cf87fbd7f03"
+  integrity sha512-1AwoCDkdHyxYYMoH0HreYe65nELW2uRnBNM9cv7APivQoxZ/66p7PCugwp4w2oVvThT6ZYWBrTbWBYL0uRe8WQ==
+  dependencies:
+    lodash "4.17.4"
+    platform "1.3.3"
 
 karma-benchmarkjs-reporter@1.0.0:
   version "1.0.0"
@@ -1052,6 +1072,14 @@ karma-junit-reporter@1.2.0:
   dependencies:
     path-is-absolute "^1.0.0"
     xmlbuilder "8.2.2"
+
+karma-plotly-reporter@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/karma-plotly-reporter/-/karma-plotly-reporter-0.1.0.tgz#832932e41035a34e7005d241da39aeca372fee3f"
+  integrity sha1-gyky5BA1o05wBdJB2jmuyjcv7j8=
+  dependencies:
+    foreach "^2.0.5"
+    plotly "^1.0.6"
 
 karma@3.1.4:
   version "3.1.4"
@@ -1116,7 +1144,12 @@ lodash.debounce@^4.0.8:
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
 
-lodash@4.17.11, lodash@^4.15.0, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.5.0:
+lodash@4.17.4:
+  version "4.17.4"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
+  integrity sha1-eCA6TRwyiuHYbcpkYONptX9AVa4=
+
+lodash@^4.15.0, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.5.0:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
@@ -1238,7 +1271,7 @@ mixin-deep@^1.2.0:
     for-in "^1.0.2"
     is-extendable "^1.0.1"
 
-mkdirp@^0.5.0, mkdirp@^0.5.1:
+mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   integrity sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
@@ -1462,10 +1495,22 @@ path-is-absolute@^1.0.0:
   resolved "https://registry.yarnpkg.com/path-is-absolute/-/path-is-absolute-1.0.1.tgz#174b9268735534ffbc7ace6bf53a5a9e1b5c5f5f"
   integrity sha1-F0uSaHNVNP+8es5r9TpanhtcX18=
 
-platform@1.3.5, platform@^1.3.3:
+platform@1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/platform/-/platform-1.3.3.tgz#646c77011899870b6a0903e75e997e8e51da7461"
+  integrity sha1-ZGx3ARiZhwtqCQPnXpl+jlHadGE=
+
+platform@^1.3.3:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/platform/-/platform-1.3.5.tgz#fb6958c696e07e2918d2eeda0f0bc9448d733444"
   integrity sha512-TuvHS8AOIZNAlE77WUDiR4rySV/VMptyMfcfeoMgs4P8apaZM3JrnbzBiixKUv+XR6i+BXrQh8WAnjaSPFO65Q==
+
+plotly@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/plotly/-/plotly-1.0.6.tgz#b2672c3df88333625bdf684982d0e3f6521d7aaa"
+  integrity sha1-smcsPfiDM2Jb32hJgtDj9lIdeqo=
+  dependencies:
+    mkdirp "~0.5.0"
 
 posix-character-classes@^0.1.0:
   version "0.1.1"

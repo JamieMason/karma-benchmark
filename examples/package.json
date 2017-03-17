@@ -4,6 +4,7 @@
     "benchmark": "2.1.4",
     "karma": "3.1.4",
     "karma-benchmark": "*",
+    "karma-benchmark-plotly-reporter": "1.0.0",
     "karma-benchmarkjs-reporter": "1.0.0",
     "karma-chrome-launcher": "2.2.0",
     "karma-junit-reporter": "1.2.0"
