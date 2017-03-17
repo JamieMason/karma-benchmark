@@ -1,0 +1,19 @@
+{
+  "gitbook": "3.2.2",
+  "title": "karma-benchmark",
+  "plugins": ["edit-link", "prism", "-highlight", "github", "anchorjs"],
+  "pluginsConfig": {
+    "edit-link": {
+      "base": "https://github.com/JamieMason/karma-benchmark/tree/master",
+      "label": "Edit This Page"
+    },
+    "github": {
+      "url": "https://github.com/JamieMason/karma-benchmark/"
+    },
+    "prism": {
+      "css": [
+        "prismjs/themes/prism-solarizedlight.css"
+      ]
+    }
+  }
+}

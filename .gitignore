@@ -1,4 +1,5 @@
+*.log
+_book
+dist
 examples/reports/
 node_modules
-npm-debug.log
-dist
