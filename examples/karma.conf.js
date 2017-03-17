@@ -2,6 +2,19 @@ module.exports = function(karma) {
   var config = {
     autoWatch: false,
     basePath: '',
+
+    // for full list of options, see
+    // https://github.com/FormidableLabs/karma-benchmarkjs-reporter
+    benchmarkReporter: {
+      decorator: '-',
+      terminalWidth: 80,
+      hzWidth: 4,
+      hzUnits: 'ops/sec',
+      browserWidth: 40,
+      showBrowser: false,
+      showSuiteSummary: true
+    },
+
     browsers: [
       'PhantomJS'
     ],
