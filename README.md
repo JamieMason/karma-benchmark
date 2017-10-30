@@ -122,7 +122,7 @@ suite('Array iteration', function() {
 
 ### Suite options
 
-Suite options are the same as in Benchmark.js with one exception: `setup` and `teardown` can be set at the suite level.
+Suite options are the same as in Benchmark.js with one exception: `onStart` and `onComplete` can be set at the suite level.
 
 See the [Benchmark.js Suite constructor API docs](http://benchmarkjs.com/docs#Suite) for a full list of options.
 
@@ -145,10 +145,10 @@ suite('Array iteration', function() {
     var benchmark = event.target;
     console.log('Cycle completed for ' + suite.name + ': ' + benchmark.name);
   },
-  setup: function() {
+  onStart: function() {
     this.list = [5, 4, 3];
   },
-  teardown: function() {
+  onComplete: function() {
     this.list = null;
   }
 });
