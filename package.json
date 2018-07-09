@@ -13,8 +13,11 @@
   },
   "bugs": "https://github.com/JamieMason/karma-benchmark/issues",
   "contributors": [
-    "Jacob Rask <jacob@jacobrask.net>",
-    "Larry Davis <lazdnet@gmail.com>"
+    "Jacob Rask (https://github.com/jacobrask)",
+    "Jared Sprague (https://github.com/Jared-Sprague)",
+    "Larry Davis (https://github.com/lazd)",
+    "Micha Reiser (https://github.com/MichaReiser)",
+    "Oleh Aloshkin (https://github.com/AleshaOleg)"
   ],
   "dependencies": {
     "lodash": "4.17.4",
