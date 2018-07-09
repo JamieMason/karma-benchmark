@@ -3,14 +3,18 @@
 [![NPM version](http://img.shields.io/npm/v/karma-benchmark.svg?style=flat-square)](https://www.npmjs.com/package/karma-benchmark)
 [![NPM downloads](http://img.shields.io/npm/dm/karma-benchmark.svg?style=flat-square)](https://www.npmjs.com/package/karma-benchmark)
 [![Dependency Status](http://img.shields.io/david/JamieMason/karma-benchmark.svg?style=flat-square)](https://david-dm.org/JamieMason/karma-benchmark)
-[![Join the chat at https://gitter.im/JamieMason/karma-benchmark](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/JamieMason/karma-benchmark)
+[![Gitter Chat for karma-benchmark](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/JamieMason/karma-benchmark)
+[![Donate via PayPal](https://img.shields.io/badge/donate-paypal-blue.svg)](https://www.paypal.me/foldleft)
 [![Analytics](https://ga-beacon.appspot.com/UA-45466560-5/karma-benchmark?flat&useReferer)](https://github.com/igrigorik/ga-beacon)
+[![Follow JamieMason on GitHub](https://img.shields.io/github/followers/JamieMason.svg?style=social&label=Follow)](https://github.com/JamieMason)
+[![Follow fold_left on Twitter](https://img.shields.io/twitter/follow/fold_left.svg?style=social&label=Follow)](https://twitter.com/fold_left)
 
 > A [Karma](http://karma-runner.github.io/) plugin to run [Benchmark.js](http://benchmarkjs.com/) over multiple browsers with [Jenkins CI](http://jenkins-ci.org/) compatible output.
 
 ## Installation
 
-```shell
+```
+npm install benchmark --save-dev
 npm install karma-benchmark --save-dev
 ```
 
@@ -20,29 +24,25 @@ npm install karma-benchmark --save-dev
 
 To see jsPerf style results on the command line, install [`karma-benchmark-reporter`](https://github.com/lazd/karma-benchmark-reporter):
 
-```shell
+```
 npm install karma-benchmark-reporter --save-dev
 ```
 
 Then, in **karma.conf.js**, add `benchmark` to the list of reporters:
 
-```javascript
+```js
 module.exports = function(config) {
   config.set({
     // Other Karma config here...
-    frameworks: [
-      'benchmark'
-    ],
-    reporters: [
-      'benchmark'
-    ],
+    frameworks: ["benchmark"],
+    reporters: ["benchmark"]
   });
 };
 ```
 
 Run Karma:
 
-```shell
+```
 karma start
 ```
 
@@ -64,26 +64,22 @@ See the [examples](https://github.com/JamieMason/karma-benchmark/tree/master/exa
 
 To feed your data into Jenkins, install [`karma-junit-reporter`](https://github.com/karma-runner/karma-junit-reporter).
 
-```shell
+```
 npm install karma-junit-reporter --save-dev
 ```
 
 In **karma.conf.js**, add `junit` to the list of reporters and configure the reporter accordingly:
 
-```javascript
+```js
 module.exports = function(config) {
   config.set({
     // Other Karma config here...
-    frameworks: [
-      'benchmark'
-    ],
+    frameworks: ["benchmark"],
     junitReporter: {
-      outputDir: 'reports',
-      outputFile: 'benchmark.xml'
+      outputDir: "reports",
+      outputFile: "benchmark.xml"
     },
-    reporters: [
-      'junit'
-    ]
+    reporters: ["junit"]
   });
 };
 ```
@@ -92,8 +88,8 @@ module.exports = function(config) {
 
 As large suites of Benchmarks take a long time to run, you _may_ need to increase Karma's timeout from it's default of 60000.
 
-```javascript
-captureTimeout: 60000
+```js
+captureTimeout: 60000;
 ```
 
 ## Writing Benchmarks
@@ -104,15 +100,15 @@ Suites and benchmarks are defined using a wrapper for Benchmark.js in the form o
 
 In this example, a suite is defined that pits `_.each` against the native `Array.forEach` method:
 
-```javascript
-suite('Array iteration', function() {
-  benchmark('_.each', function() {
+```js
+suite("Array iteration", function() {
+  benchmark("_.each", function() {
     _.each([1, 2, 3], function(el) {
       return el;
     });
   });
 
-  benchmark('native forEach', function() {
+  benchmark("native forEach", function() {
     [1, 2, 3].forEach(function(el) {
       return el;
     });
@@ -126,34 +122,37 @@ Suite options are the same as in Benchmark.js with one exception: `onStart` and 
 
 See the [Benchmark.js Suite constructor API docs](http://benchmarkjs.com/docs#Suite) for a full list of options.
 
-```javascript
-suite('Array iteration', function() {
-  benchmark('_.each', function() {
-    _.each(this.list, function(number) {
-      return number;
+```js
+suite(
+  "Array iteration",
+  function() {
+    benchmark("_.each", function() {
+      _.each(this.list, function(number) {
+        return number;
+      });
     });
-  });
 
-  benchmark('native forEach', function() {
-    this.list.forEach(function(number) {
-      return number;
+    benchmark("native forEach", function() {
+      this.list.forEach(function(number) {
+        return number;
+      });
     });
-  });
-}, {
-  onCycle: function(event) {
-    var suite = this;
-    var benchmark = event.target;
-    console.log('Cycle completed for ' + suite.name + ': ' + benchmark.name);
   },
-  onStart: function() {
-    this.list = [5, 4, 3];
-  },
-  onComplete: function() {
-    this.list = null;
+  {
+    onCycle: function(event) {
+      var suite = this;
+      var benchmark = event.target;
+      console.log("Cycle completed for " + suite.name + ": " + benchmark.name);
+    },
+    onStart: function() {
+      this.list = [5, 4, 3];
+    },
+    onComplete: function() {
+      this.list = null;
+    }
   }
-});
+);
 ```
-
 
 ### Benchmark options
 
@@ -161,40 +160,47 @@ Benchmark options are the same as in Benchmark.js. If `setup` and `teardown` are
 
 See the [Benchmark.js Benchmark constructor API docs](http://benchmarkjs.com/docs#Benchmark) for a full list of options.
 
-```javascript
-suite('Iteration', function() {
-  benchmark('_.each with array', function() {
-    _.each(this.list, function(number) {
-      return number;
-    });
-  }, {
-    setup: function() {
-      this.list = ['a', 'b', 'c'];
+```js
+suite("Iteration", function() {
+  benchmark(
+    "_.each with array",
+    function() {
+      _.each(this.list, function(number) {
+        return number;
+      });
     },
-    teardown: function() {
-      delete this.list
+    {
+      setup: function() {
+        this.list = ["a", "b", "c"];
+      },
+      teardown: function() {
+        delete this.list;
+      }
     }
-  });
+  );
 
-  benchmark('_.each with object', function() {
-    _.each(this.list, function(number) {
-      return number;
-    });
-  }, {
-    setup: function() {
-      this.list = {
-        0: 'a',
-        1: 'b',
-        2: 'c'
-      };
+  benchmark(
+    "_.each with object",
+    function() {
+      _.each(this.list, function(number) {
+        return number;
+      });
     },
-    teardown: function() {
-      delete this.list
+    {
+      setup: function() {
+        this.list = {
+          0: "a",
+          1: "b",
+          2: "c"
+        };
+      },
+      teardown: function() {
+        delete this.list;
+      }
     }
-  });
+  );
 });
 ```
-
 
 ### Running only a specific benchmark or suite
 
@@ -212,7 +218,6 @@ benchmark(function() {
 ```
 
 The same applies to suites with `suite.only()` and `ssuite()`.
-
 
 ### Skipping benchmarks & suites
 
