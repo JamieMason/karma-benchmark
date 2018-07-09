@@ -16,8 +16,6 @@
   },
   "devDependencies": {
     "browserify": "14.1.0",
-    "jasmine": "2.5.3",
-    "jasmine-expect": "3.6.0",
     "xo": "0.17.1"
   },
   "files": [
@@ -44,7 +42,7 @@
     "prebuild": "mkdir -p dist",
     "prepublish": "npm run build",
     "pretest": "npm run build",
-    "test": "jasmine JASMINE_CONFIG_PATH=jasmine.json"
+    "test": "xo"
   },
   "xo": {
     "envs": [
