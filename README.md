@@ -9,7 +9,9 @@
 [![Follow JamieMason on GitHub](https://img.shields.io/github/followers/JamieMason.svg?style=social&label=Follow)](https://github.com/JamieMason)
 [![Follow fold_left on Twitter](https://img.shields.io/twitter/follow/fold_left.svg?style=social&label=Follow)](https://twitter.com/fold_left)
 
-> A [Karma](http://karma-runner.github.io/) plugin to run [Benchmark.js](http://benchmarkjs.com/) over multiple browsers with [Jenkins CI](http://jenkins-ci.org/) compatible output.
+> A [Karma](http://karma-runner.github.io/) plugin to run
+> [Benchmark.js](http://benchmarkjs.com/) over multiple browsers with
+> [Jenkins CI](http://jenkins-ci.org/) compatible output.
 
 ## Installation
 
@@ -22,7 +24,8 @@ npm install karma-benchmark --save-dev
 
 ### Reporting results on the command line
 
-To see jsPerf style results on the command line, install [`karma-benchmark-reporter`](https://github.com/lazd/karma-benchmark-reporter):
+To see jsPerf style results on the command line, install
+[`karma-benchmark-reporter`](https://github.com/lazd/karma-benchmark-reporter):
 
 ```
 npm install karma-benchmark-reporter --save-dev
@@ -34,8 +37,8 @@ Then, in **karma.conf.js**, add `benchmark` to the list of reporters:
 module.exports = function(config) {
   config.set({
     // Other Karma config here...
-    frameworks: ["benchmark"],
-    reporters: ["benchmark"]
+    frameworks: ['benchmark'],
+    reporters: ['benchmark']
   });
 };
 ```
@@ -58,35 +61,40 @@ Chrome 32.0.1700 (Mac OS X 10.9.1)
   Array search: util.contains at 12635982 ops/sec (2.17x faster than Array.indexOf)
 ```
 
-See the [examples](https://github.com/JamieMason/karma-benchmark/tree/master/examples) folder for a full example.
+See the
+[examples](https://github.com/JamieMason/karma-benchmark/tree/master/examples)
+folder for a full example.
 
 ### Feeding Data Into Jenkins
 
-To feed your data into Jenkins, install [`karma-junit-reporter`](https://github.com/karma-runner/karma-junit-reporter).
+To feed your data into Jenkins, install
+[`karma-junit-reporter`](https://github.com/karma-runner/karma-junit-reporter).
 
 ```
 npm install karma-junit-reporter --save-dev
 ```
 
-In **karma.conf.js**, add `junit` to the list of reporters and configure the reporter accordingly:
+In **karma.conf.js**, add `junit` to the list of reporters and configure the
+reporter accordingly:
 
 ```js
 module.exports = function(config) {
   config.set({
     // Other Karma config here...
-    frameworks: ["benchmark"],
+    frameworks: ['benchmark'],
     junitReporter: {
-      outputDir: "reports",
-      outputFile: "benchmark.xml"
+      outputDir: 'reports',
+      outputFile: 'benchmark.xml'
     },
-    reporters: ["junit"]
+    reporters: ['junit']
   });
 };
 ```
 
 ### Timeouts
 
-As large suites of Benchmarks take a long time to run, you _may_ need to increase Karma's timeout from it's default of 60000.
+As large suites of Benchmarks take a long time to run, you _may_ need to
+increase Karma's timeout from it's default of 60000.
 
 ```js
 captureTimeout: 60000;
@@ -94,21 +102,23 @@ captureTimeout: 60000;
 
 ## Writing Benchmarks
 
-Suites and benchmarks are defined using a wrapper for Benchmark.js in the form of the `suite` and `benchmark` globals.
+Suites and benchmarks are defined using a wrapper for Benchmark.js in the form
+of the `suite` and `benchmark` globals.
 
 ### Typical
 
-In this example, a suite is defined that pits `_.each` against the native `Array.forEach` method:
+In this example, a suite is defined that pits `_.each` against the native
+`Array.forEach` method:
 
 ```js
-suite("Array iteration", function() {
-  benchmark("_.each", function() {
+suite('Array iteration', function() {
+  benchmark('_.each', function() {
     _.each([1, 2, 3], function(el) {
       return el;
     });
   });
 
-  benchmark("native forEach", function() {
+  benchmark('native forEach', function() {
     [1, 2, 3].forEach(function(el) {
       return el;
     });
@@ -118,21 +128,24 @@ suite("Array iteration", function() {
 
 ### Suite options
 
-Suite options are the same as in Benchmark.js with one exception: `onStart` and `onComplete` can be set at the suite level.
+Suite options are the same as in Benchmark.js with one exception: `onStart` and
+`onComplete` can be set at the suite level.
 
-See the [Benchmark.js Suite constructor API docs](http://benchmarkjs.com/docs#Suite) for a full list of options.
+See the
+[Benchmark.js Suite constructor API docs](http://benchmarkjs.com/docs#Suite) for
+a full list of options.
 
 ```js
 suite(
-  "Array iteration",
+  'Array iteration',
   function() {
-    benchmark("_.each", function() {
+    benchmark('_.each', function() {
       _.each(this.list, function(number) {
         return number;
       });
     });
 
-    benchmark("native forEach", function() {
+    benchmark('native forEach', function() {
       this.list.forEach(function(number) {
         return number;
       });
@@ -142,7 +155,7 @@ suite(
     onCycle: function(event) {
       var suite = this;
       var benchmark = event.target;
-      console.log("Cycle completed for " + suite.name + ": " + benchmark.name);
+      console.log('Cycle completed for ' + suite.name + ': ' + benchmark.name);
     },
     onStart: function() {
       this.list = [5, 4, 3];
@@ -156,14 +169,18 @@ suite(
 
 ### Benchmark options
 
-Benchmark options are the same as in Benchmark.js. If `setup` and `teardown` are passed to `benchmark()`, they will override `setup` and `teardown` from the suite. Pass `null` or undefined to remove them.
+Benchmark options are the same as in Benchmark.js. If `setup` and `teardown` are
+passed to `benchmark()`, they will override `setup` and `teardown` from the
+suite. Pass `null` or undefined to remove them.
 
-See the [Benchmark.js Benchmark constructor API docs](http://benchmarkjs.com/docs#Benchmark) for a full list of options.
+See the
+[Benchmark.js Benchmark constructor API docs](http://benchmarkjs.com/docs#Benchmark)
+for a full list of options.
 
 ```js
-suite("Iteration", function() {
+suite('Iteration', function() {
   benchmark(
-    "_.each with array",
+    '_.each with array',
     function() {
       _.each(this.list, function(number) {
         return number;
@@ -171,7 +188,7 @@ suite("Iteration", function() {
     },
     {
       setup: function() {
-        this.list = ["a", "b", "c"];
+        this.list = ['a', 'b', 'c'];
       },
       teardown: function() {
         delete this.list;
@@ -180,7 +197,7 @@ suite("Iteration", function() {
   );
 
   benchmark(
-    "_.each with object",
+    '_.each with object',
     function() {
       _.each(this.list, function(number) {
         return number;
@@ -189,9 +206,9 @@ suite("Iteration", function() {
     {
       setup: function() {
         this.list = {
-          0: "a",
-          1: "b",
-          2: "c"
+          0: 'a',
+          1: 'b',
+          2: 'c'
         };
       },
       teardown: function() {
@@ -204,7 +221,8 @@ suite("Iteration", function() {
 
 ### Running only a specific benchmark or suite
 
-To run only a specific benchmark, use `benchmark.only()` or `bbenchmark()` instead of `benchmark()`:
+To run only a specific benchmark, use `benchmark.only()` or `bbenchmark()`
+instead of `benchmark()`:
 
 ```js
 benchmark.only(function() {
@@ -221,7 +239,8 @@ The same applies to suites with `suite.only()` and `ssuite()`.
 
 ### Skipping benchmarks & suites
 
-To skip a benchmark, use `benchmark.skip()` or `xbenchmark()` instead of `benchmark()`:
+To skip a benchmark, use `benchmark.skip()` or `xbenchmark()` instead of
+`benchmark()`:
 
 ```js
 benchmark.skip(function() {
