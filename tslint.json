@@ -3,10 +3,7 @@
   "rules": {
     "ban-types": [false],
     "interface-name": [false],
-    "no-console": [false],
-    "no-var-requires": [false],
     "quotemark": [true, "single"],
-    "trailing-comma": [false],
-    "variable-name": [false]
+    "trailing-comma": [false]
   }
 }

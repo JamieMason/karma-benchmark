@@ -1,9 +1,9 @@
+import { KarmaBenchmark } from './benchmark';
 import { processBenchmarks } from './process-benchmarks';
 import { provideApi } from './provide-api';
 import { provideDump } from './provide-dump';
 import { runBenchmarks } from './run-benchmarks';
 import * as store from './store';
-import { WrappedBenchmark } from './wrapped-benchmark';
 
 declare global {
   namespace NodeJS {
@@ -15,12 +15,12 @@ declare global {
         result(result: any): void;
         start(): void;
       };
-      Benchmark: WrappedBenchmark;
+      Benchmark: typeof KarmaBenchmark;
     }
   }
 }
 
-global.Benchmark = WrappedBenchmark;
+global.Benchmark = KarmaBenchmark;
 
 provideApi(global);
 provideDump(global);
