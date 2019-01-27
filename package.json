@@ -8,8 +8,7 @@
     "Jacob Rask (https://github.com/jacobrask)",
     "Jared Sprague (https://github.com/Jared-Sprague)",
     "Larry Davis (https://github.com/lazd)",
-    "Micha Reiser (https://github.com/MichaReiser)",
-    "Oleh Aloshkin (https://github.com/AleshaOleg)"
+    "Micha Reiser (https://github.com/MichaReiser)"
   ],
   "dependencies": {
     "lodash": "4.17.11",
