@@ -1,6 +1,6 @@
 {
   "name": "karma-benchmark",
-  "description": "Continuous JavaScript Performance Monitoring with Benchmark.js and the Karma Runner",
+  "description": "Run Benchmark.js over multiple Browsers, with CI compatible output",
   "version": "1.0.1",
   "author": "Jamie Mason (https://github.com/JamieMason)",
   "bugs": "https://github.com/JamieMason/karma-benchmark/issues",

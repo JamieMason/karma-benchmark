@@ -6,7 +6,7 @@ module.exports = function(karma) {
     // https://github.com/FormidableLabs/karma-benchmarkjs-reporter
     benchmarkReporter: {
       decorator: '-',
-      terminalWidth: 80,
+      terminalWidth: 60,
       hzWidth: 4,
       hzUnits: 'ops/sec',
       browserWidth: 40,
