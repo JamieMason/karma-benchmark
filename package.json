@@ -3,14 +3,6 @@
   "description": "Continuous JavaScript Performance Monitoring with Benchmark.js and the Karma Runner",
   "version": "1.0.0",
   "author": "Jamie Mason (https://github.com/JamieMason)",
-  "browserify": {
-    "transform": [
-      "browserify-shim"
-    ]
-  },
-  "browserify-shim": {
-    "benchmark": "global:Benchmark"
-  },
   "bugs": "https://github.com/JamieMason/karma-benchmark/issues",
   "contributors": [
     "Jacob Rask (https://github.com/jacobrask)",
@@ -40,19 +32,19 @@
     "webpack-cli": "3.2.1"
   },
   "files": [
-    "dist/",
-    "index.js",
-    "src/"
+    "dist/"
   ],
   "homepage": "https://github.com/JamieMason/karma-benchmark",
   "keywords": [
     "benchmark",
+    "benchmarking",
     "jsperf",
     "karma",
     "karma-framework",
     "karma-plugin",
     "monitoring",
-    "performance"
+    "performance",
+    "profiling"
   ],
   "license": "MIT",
   "main": "dist/index.js",
