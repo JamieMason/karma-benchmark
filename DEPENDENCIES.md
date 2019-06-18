@@ -1,7 +1,6 @@
 # karma-benchmark
 
-Continuous JavaScript Performance Monitoring with Benchmark.js and the Karma
-Runner
+Run Benchmark.js over multiple Browsers, with CI compatible output
 
 ## Installation
 
