@@ -24,10 +24,10 @@
     "karma": "3.1.4",
     "prettier": "1.18.2",
     "rimraf": "2.6.3",
-    "ts-loader": "6.0.3",
+    "ts-loader": "6.0.4",
     "tslint": "5.17.0",
     "typescript": "3.5.2",
-    "webpack": "4.34.0",
+    "webpack": "4.35.0",
     "webpack-cli": "3.3.4"
   },
   "files": [
