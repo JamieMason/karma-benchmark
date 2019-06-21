@@ -1,7 +1,7 @@
 {
   "name": "karma-benchmark",
   "description": "Run Benchmark.js over multiple Browsers, with CI compatible output",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Jamie Mason (https://github.com/JamieMason)",
   "bugs": "https://github.com/JamieMason/karma-benchmark/issues",
   "contributors": [

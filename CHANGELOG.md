@@ -1,3 +1,11 @@
+## [1.0.3](https://github.com/JamieMason/karma-benchmark/compare/1.0.2...1.0.3) (2019-06-21)
+
+### Bug Fixes
+
+- **npm:** update dependencies
+  ([6421f88](https://github.com/JamieMason/karma-benchmark/commit/6421f88)),
+  closes [#30](https://github.com/JamieMason/karma-benchmark/issues/30)
+
 ## [1.0.2](https://github.com/JamieMason/karma-benchmark/compare/1.0.1...1.0.2) (2019-06-18)
 
 ### Bug Fixes
