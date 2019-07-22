@@ -2,14 +2,17 @@
   "name": "karma-benchmark-examples",
   "devDependencies": {
     "benchmark": "2.1.4",
-    "karma": "4.1.0",
+    "karma": "4.2.0",
     "karma-benchmark": "file:..",
     "karma-benchmark-plotly-reporter": "1.0.0",
     "karma-benchmarkjs-reporter": "1.0.0",
-    "karma-chrome-launcher": "2.2.0",
+    "karma-chrome-launcher": "3.0.0",
     "karma-junit-reporter": "1.2.0"
   },
   "private": true,
+  "resolutions": {
+    "lodash": ">=4.17.15"
+  },
   "scripts": {
     "test": "karma start"
   }
